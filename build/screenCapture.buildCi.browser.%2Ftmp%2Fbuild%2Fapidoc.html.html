@@ -1,0 +1,972 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/mobxjs/serializr#readme">serializr (v1.1.11)</a>
+</h1>
+<h4>Serialize and deserialize complex object graphs to JSON</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.serializr">module serializr</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.serializr.alias">
+            function <span class="apidocSignatureSpan">serializr.</span>alias
+            <span class="apidocSignatureSpan">(name, propSchema)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.serializr.child">
+            function <span class="apidocSignatureSpan">serializr.</span>child
+            <span class="apidocSignatureSpan">(modelSchema)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.serializr.createModelSchema">
+            function <span class="apidocSignatureSpan">serializr.</span>createModelSchema
+            <span class="apidocSignatureSpan">(clazz, props, factory)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.serializr.createSimpleSchema">
+            function <span class="apidocSignatureSpan">serializr.</span>createSimpleSchema
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.serializr.custom">
+            function <span class="apidocSignatureSpan">serializr.</span>custom
+            <span class="apidocSignatureSpan">(serializer, deserializer)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.serializr.date">
+            function <span class="apidocSignatureSpan">serializr.</span>date
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.serializr.deserialize">
+            function <span class="apidocSignatureSpan">serializr.</span>deserialize
+            <span class="apidocSignatureSpan">(schema, json, callback, customArgs)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.serializr.getDefaultModelSchema">
+            function <span class="apidocSignatureSpan">serializr.</span>getDefaultModelSchema
+            <span class="apidocSignatureSpan">(thing)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.serializr.identifier">
+            function <span class="apidocSignatureSpan">serializr.</span>identifier
+            <span class="apidocSignatureSpan">(registerFn)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.serializr.list">
+            function <span class="apidocSignatureSpan">serializr.</span>list
+            <span class="apidocSignatureSpan">(propSchema)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.serializr.map">
+            function <span class="apidocSignatureSpan">serializr.</span>map
+            <span class="apidocSignatureSpan">(propSchema)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.serializr.object">
+            function <span class="apidocSignatureSpan">serializr.</span>object
+            <span class="apidocSignatureSpan">(modelSchema)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.serializr.primitive">
+            function <span class="apidocSignatureSpan">serializr.</span>primitive
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.serializr.ref">
+            function <span class="apidocSignatureSpan">serializr.</span>ref
+            <span class="apidocSignatureSpan">(target, lookupFn)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.serializr.reference">
+            function <span class="apidocSignatureSpan">serializr.</span>reference
+            <span class="apidocSignatureSpan">(target, lookupFn)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.serializr.serializable">
+            function <span class="apidocSignatureSpan">serializr.</span>serializable
+            <span class="apidocSignatureSpan">(arg1, arg2, arg3)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.serializr.serialize">
+            function <span class="apidocSignatureSpan">serializr.</span>serialize
+            <span class="apidocSignatureSpan">(arg1, arg2)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.serializr.serializeAll">
+            function <span class="apidocSignatureSpan">serializr.</span>serializeAll
+            <span class="apidocSignatureSpan">(target)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.serializr.setDefaultModelSchema">
+            function <span class="apidocSignatureSpan">serializr.</span>setDefaultModelSchema
+            <span class="apidocSignatureSpan">(clazz, modelSchema)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.serializr.update">
+            function <span class="apidocSignatureSpan">serializr.</span>update
+            <span class="apidocSignatureSpan">(modelSchema, target, json, callback, customArgs)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">symbol <span class="apidocSignatureSpan">serializr.</span>SKIP</span>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.serializr" id="apidoc.module.serializr">module serializr</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.serializr.alias" id="apidoc.element.serializr.alias">
+        function <span class="apidocSignatureSpan">serializr.</span>alias
+        <span class="apidocSignatureSpan">(name, propSchema)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function alias(name, propSchema) {
+    invariant(name &amp;&amp; typeof name === "string", "expected prop name as first argument")
+    propSchema = (!propSchema || propSchema === true)  ? _defaultPrimitiveProp : propSchema
+    invariant(isPropSchema(propSchema), "expected prop schema as second argument")
+    invariant(!isAliasedPropSchema(propSchema), "provided prop is already aliased")
+    return {
+        jsonname: name,
+        serializer: propSchema.serializer,
+        deserializer: propSchema.deserializer,
+        identifier: isIdentifierPropSchema(propSchema)
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.serializr.child" id="apidoc.element.serializr.child">
+        function <span class="apidocSignatureSpan">serializr.</span>child
+        <span class="apidocSignatureSpan">(modelSchema)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function object(modelSchema) {
+    invariant(typeof modelSchema === "object" || typeof modelSchema === "function", "No modelschema provided. If you are importing
+ it from another file be aware of circular dependencies.")
+    return {
+        serializer: function (item) {
+            modelSchema = getDefaultModelSchema(modelSchema)
+            invariant(isModelSchema(modelSchema), "expected modelSchema, got " + modelSchema)
+            if (item === null || item === undefined)
+                return item
+            return serialize(modelSchema, item)
+        },
+        deserializer: function (childJson, done, context) {
+            modelSchema = getDefaultModelSchema(modelSchema)
+            invariant(isModelSchema(modelSchema), "expected modelSchema, got " + modelSchema)
+            if (childJson === null || childJson === undefined)
+                return void done(null, childJson)
+            return void deserializeObjectWithSchema(context, modelSchema, childJson, done)
+        }
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.serializr.createModelSchema" id="apidoc.element.serializr.createModelSchema">
+        function <span class="apidocSignatureSpan">serializr.</span>createModelSchema
+        <span class="apidocSignatureSpan">(clazz, props, factory)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function createModelSchema(clazz, props, factory) {
+    invariant(clazz !== Object, "one cannot simply put define a model schema for Object")
+    invariant(typeof clazz === "function", "expected constructor function")
+    var model = {
+        targetClass: clazz,
+        factory: factory || function() {
+            return new clazz()
+        },
+        props: props
+    }
+    // find super model
+    if (clazz.prototype.constructor !== Object) {
+        var s = getDefaultModelSchema(clazz.prototype.constructor)
+        if (s &amp;&amp; s.targetClass !== clazz)
+            model.extends = s
+    }
+    setDefaultModelSchema(clazz, model)
+    return model
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.serializr.createSimpleSchema" id="apidoc.element.serializr.createSimpleSchema">
+        function <span class="apidocSignatureSpan">serializr.</span>createSimpleSchema
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function createSimpleSchema(props) {
+    return {
+        factory: function() {
+            return {}
+        },
+        props: props
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+-   `registerFn` **RegisterFunction** optional function to register this object during creation.
+
+**Examples**
+
+```javascript
+var todos = {};
+
+var s = _.<span class="apidocCodeKeywordSpan">createSimpleSchema</span>({
+    id: _.identifier((id, object) =&gt; todos[id] = object),
+    title: true
+})
+
+_.deserialize(s, {
+    id: 1, title: "test0"
+})
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.serializr.custom" id="apidoc.element.serializr.custom">
+        function <span class="apidocSignatureSpan">serializr.</span>custom
+        <span class="apidocSignatureSpan">(serializer, deserializer)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function custom(serializer, deserializer) {
+    invariant(typeof serializer === "function", "first argument should be function")
+    invariant(typeof deserializer === "function", "second argument should be function")
+    return {
+        serializer: serializer,
+        deserializer: function (jsonValue, done) {
+            done(null, deserializer(jsonValue))
+        }
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+-   `serializer` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** function
+that takes a model value and turns it into a json value
+-   `deserializer` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** function
+ that takes a json value and turns it into a model value
+
+**Examples**
+
+```javascript
+var schema = _.createSimpleSchema({
+  a: _.<span class="apidocCodeKeywordSpan">custom</span>(
+    function(v) { return v + 2 },
+    function(v) { return v - 2 }
+  )
+})
+t.deepEqual(_.serialize(s, { a: 4 }), { a: 6 })
+t.deepEqual(_.deserialize(s, { a: 6 }), { a: 4 })
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.serializr.date" id="apidoc.element.serializr.date">
+        function <span class="apidocSignatureSpan">serializr.</span>date
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function date() {
+    // TODO: add format option?
+    return {
+        serializer: function(value) {
+            if (value === null || value === undefined)
+                return value
+            invariant(value instanceof Date, "Expected Date object")
+            return value.getTime()
+        },
+        deserializer: function (jsonValue, done) {
+            if (jsonValue === null || jsonValue === undefined)
+                return void done(null, jsonValue)
+            return void done(null, new Date(jsonValue))
+        }
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.serializr.deserialize" id="apidoc.element.serializr.deserialize">
+        function <span class="apidocSignatureSpan">serializr.</span>deserialize
+        <span class="apidocSignatureSpan">(schema, json, callback, customArgs)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function deserialize(schema, json, callback, customArgs) {
+    invariant(arguments.length &gt;= 2, "deserialize expects at least 2 arguments")
+    schema = getDefaultModelSchema(schema)
+    invariant(isModelSchema(schema), "first argument should be model schema")
+    if (Array.isArray(json)) {
+        var items = []
+        parallel(
+            json,
+            function (childJson, itemDone) {
+                var instance = deserializeObjectWithSchema(null, schema, childJson, itemDone, customArgs)
+                // instance is created synchronously so can be pushed
+                items.push(instance)
+            },
+            callback || GUARDED_NOOP
+        )
+        return items
+    } else
+        return deserializeObjectWithSchema(null, schema, json, callback, customArgs)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var todos = {};
+
+var s = _.createSimpleSchema({
+    id: _.identifier((id, object) =&gt; todos[id] = object),
+    title: true
+})
+
+_.<span class="apidocCodeKeywordSpan">deserialize</span>(s, {
+    id: 1, title: "test0"
+})
+_.deserialize(s, [
+    { id: 2, title: "test2" },
+    { id: 1, title: "test1" }
+])
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.serializr.getDefaultModelSchema" id="apidoc.element.serializr.getDefaultModelSchema">
+        function <span class="apidocSignatureSpan">serializr.</span>getDefaultModelSchema
+        <span class="apidocSignatureSpan">(thing)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getDefaultModelSchema(thing) {
+    if (!thing)
+        return null
+    if (isModelSchema(thing))
+        return thing
+    if (isModelSchema(thing.serializeInfo))
+        return thing.serializeInfo
+    if (thing.constructor &amp;&amp; thing.constructor.serializeInfo)
+        return thing.constructor.serializeInfo
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.serializr.identifier" id="apidoc.element.serializr.identifier">
+        function <span class="apidocSignatureSpan">serializr.</span>identifier
+        <span class="apidocSignatureSpan">(registerFn)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function identifier(registerFn) {
+    invariant(!registerFn || typeof registerFn === "function", "First argument should be ommitted or function")
+    return {
+        identifier: true,
+        serializer: _defaultPrimitiveProp.serializer,
+        deserializer: function (jsonValue, done, context) {
+            _defaultPrimitiveProp.deserializer(jsonValue, function(err, id) {
+                defaultRegisterFunction(id, context.target, context)
+                if (registerFn)
+                    registerFn(id, context.target, context)
+                done(err, id)
+            })
+        }
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+**Examples**
+
+```javascript
+var todos = {};
+
+var s = _.createSimpleSchema({
+    id: _.<span class="apidocCodeKeywordSpan">identifier</span>((id, object) =&gt; todos[id] = object),
+    title: true
+})
+
+_.deserialize(s, {
+    id: 1, title: "test0"
+})
+_.deserialize(s, [
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.serializr.list" id="apidoc.element.serializr.list">
+        function <span class="apidocSignatureSpan">serializr.</span>list
+        <span class="apidocSignatureSpan">(propSchema)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function list(propSchema) {
+    propSchema = propSchema || _defaultPrimitiveProp
+    invariant(isPropSchema(propSchema), "expected prop schema as second argument")
+    invariant(!isAliasedPropSchema(propSchema), "provided prop is aliased, please put aliases first")
+    return {
+        serializer: function (ar) {
+            invariant(ar &amp;&amp; "length" in ar &amp;&amp; "map" in ar, "expected array (like) object")
+            return ar.map(propSchema.serializer)
+        },
+        deserializer: function(jsonArray, done, context) {
+            if (!Array.isArray(jsonArray))
+                return void done("[serializr] expected JSON array")
+            parallel(
+                jsonArray,
+                function (item, itemDone) {
+                    return propSchema.deserializer(item, itemDone, context)
+                },
+                done
+            )
+        }
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.serializr.map" id="apidoc.element.serializr.map">
+        function <span class="apidocSignatureSpan">serializr.</span>map
+        <span class="apidocSignatureSpan">(propSchema)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function map(propSchema) {
+    propSchema = propSchema || _defaultPrimitiveProp
+    invariant(isPropSchema(propSchema), "expected prop schema as second argument")
+    invariant(!isAliasedPropSchema(propSchema), "provided prop is aliased, please put aliases first")
+    return {
+        serializer: function (m) {
+            invariant(m &amp;&amp; typeof m === "object", "expected object or Map")
+            var isMap = isMapLike(m)
+            var result = {}
+            if (isMap)
+                m.forEach(function(value, key) {
+                    result[key] = propSchema.serializer(value)
+                })
+            else for (var key in m)
+                result[key] = propSchema.serializer(m[key])
+            return result
+        },
+        deserializer: function(jsonObject, done, context, oldValue) {
+            if (!jsonObject || typeof jsonObject !== "object")
+                return void done("[serializr] expected JSON object")
+            var keys = Object.keys(jsonObject)
+            list(propSchema).deserializer(
+                keys.map(function (key) {
+                    return jsonObject[key]
+                }),
+                function (err, values) {
+                    if (err)
+                        return void done(err)
+                    var isMap = isMapLike(oldValue)
+                    var newValue
+                    if (isMap) {
+                        // if the oldValue is a map, we recycle it
+                        // there are many variations and this way we don't have to
+                        // know about the original constructor
+                        oldValue.clear()
+                        newValue = oldValue
+                    } else
+                        newValue = {}
+                    for (var i = 0, l = keys.length; i &lt; l; i++)
+                        if (isMap)
+                            newValue.set(keys[i], values[i])
+                        else
+                            newValue[keys[i]] = values[i]
+                    done(null, newValue)
+                },
+                context
+            )
+        }
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        else if (!schema)
+            schema = getDefaultModelSchema(thing[0])
+    } else if (!schema) {
+        schema = getDefaultModelSchema(thing)
+    }
+    invariant(!!schema, "Failed to find default schema for " + arg1)
+    if (Array.isArray(thing))
+        return thing.<span class="apidocCodeKeywordSpan">map</span>(function (item) {
+            return serializeWithSchema(schema, item)
+        })
+    return serializeWithSchema(schema, thing)
+}
+
+function serializeWithSchema(schema, obj) {
+    invariant(schema &amp;&amp; typeof schema === "object", "Expected schema")
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.serializr.object" id="apidoc.element.serializr.object">
+        function <span class="apidocSignatureSpan">serializr.</span>object
+        <span class="apidocSignatureSpan">(modelSchema)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function object(modelSchema) {
+    invariant(typeof modelSchema === "object" || typeof modelSchema === "function", "No modelschema provided. If you are importing
+ it from another file be aware of circular dependencies.")
+    return {
+        serializer: function (item) {
+            modelSchema = getDefaultModelSchema(modelSchema)
+            invariant(isModelSchema(modelSchema), "expected modelSchema, got " + modelSchema)
+            if (item === null || item === undefined)
+                return item
+            return serialize(modelSchema, item)
+        },
+        deserializer: function (childJson, done, context) {
+            modelSchema = getDefaultModelSchema(modelSchema)
+            invariant(isModelSchema(modelSchema), "expected modelSchema, got " + modelSchema)
+            if (childJson === null || childJson === undefined)
+                return void done(null, childJson)
+            return void deserializeObjectWithSchema(context, modelSchema, childJson, done)
+        }
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.serializr.primitive" id="apidoc.element.serializr.primitive">
+        function <span class="apidocSignatureSpan">serializr.</span>primitive
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function primitive() {
+    return {
+        serializer: function (value) {
+            invariant(isPrimitive(value), "this value is not primitive: " + value)
+            return value
+        },
+        deserializer: function (jsonValue, done) {
+            if (!isPrimitive(jsonValue))
+                return void done("[serializr] this value is not primitive: " + jsonValue)
+            return void done(null, jsonValue)
+        }
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.serializr.ref" id="apidoc.element.serializr.ref">
+        function <span class="apidocSignatureSpan">serializr.</span>ref
+        <span class="apidocSignatureSpan">(target, lookupFn)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function reference(target, lookupFn) {
+    invariant(!!target, "No modelschema provided. If you are importing it from another file be aware of circular dependencies.")
+    var initialized = false
+    var childIdentifierAttribute
+    function initialize() {
+        initialized = true
+        invariant(typeof target !== "string" || lookupFn, "if the reference target is specified by attribute name, a lookup function
+ is required")
+        invariant(!lookupFn || typeof lookupFn === "function", "second argument should be a lookup function")
+        if (typeof target === "string")
+            childIdentifierAttribute = target
+        else {
+            var modelSchema = getDefaultModelSchema(target)
+            invariant(isModelSchema(modelSchema), "expected model schema or string as first argument for 'ref', got " + modelSchema
+)
+            lookupFn = lookupFn || createDefaultRefLookup(modelSchema)
+            childIdentifierAttribute = getIdentifierProp(modelSchema)
+            invariant(!!childIdentifierAttribute, "provided model schema doesn't define an identifier() property and cannot be used
+ by 'ref'.")
+        }
+    }
+    return {
+        serializer: function (item) {
+            if (!initialized)
+                initialize()
+            return item ? item[childIdentifierAttribute] : null
+        },
+        deserializer: function(identifierValue, done, context) {
+            if (!initialized)
+                initialize()
+            if (identifierValue === null || identifierValue === undefined)
+                done(null, identifierValue)
+            else
+                lookupFn(identifierValue, done, context)
+        }
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.serializr.reference" id="apidoc.element.serializr.reference">
+        function <span class="apidocSignatureSpan">serializr.</span>reference
+        <span class="apidocSignatureSpan">(target, lookupFn)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function reference(target, lookupFn) {
+    invariant(!!target, "No modelschema provided. If you are importing it from another file be aware of circular dependencies.")
+    var initialized = false
+    var childIdentifierAttribute
+    function initialize() {
+        initialized = true
+        invariant(typeof target !== "string" || lookupFn, "if the reference target is specified by attribute name, a lookup function
+ is required")
+        invariant(!lookupFn || typeof lookupFn === "function", "second argument should be a lookup function")
+        if (typeof target === "string")
+            childIdentifierAttribute = target
+        else {
+            var modelSchema = getDefaultModelSchema(target)
+            invariant(isModelSchema(modelSchema), "expected model schema or string as first argument for 'ref', got " + modelSchema
+)
+            lookupFn = lookupFn || createDefaultRefLookup(modelSchema)
+            childIdentifierAttribute = getIdentifierProp(modelSchema)
+            invariant(!!childIdentifierAttribute, "provided model schema doesn't define an identifier() property and cannot be used
+ by 'ref'.")
+        }
+    }
+    return {
+        serializer: function (item) {
+            if (!initialized)
+                initialize()
+            return item ? item[childIdentifierAttribute] : null
+        },
+        deserializer: function(identifierValue, done, context) {
+            if (!initialized)
+                initialize()
+            if (identifierValue === null || identifierValue === undefined)
+                done(null, identifierValue)
+            else
+                lookupFn(identifierValue, done, context)
+        }
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.serializr.serializable" id="apidoc.element.serializr.serializable">
+        function <span class="apidocSignatureSpan">serializr.</span>serializable
+        <span class="apidocSignatureSpan">(arg1, arg2, arg3)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function serializable(arg1, arg2, arg3) {
+    if (arguments.length === 1) {
+        // decorated with propSchema
+        var propSchema = arg1 === true ? _defaultPrimitiveProp : arg1
+        invariant(isPropSchema(propSchema), "@serializable expects prop schema")
+        return serializableDecorator.bind(null, propSchema)
+    } else {
+        // decorated without arguments, treat as primitive
+        return serializableDecorator(primitive(), arg1, arg2, arg3)
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.serializr.serialize" id="apidoc.element.serializr.serialize">
+        function <span class="apidocSignatureSpan">serializr.</span>serialize
+        <span class="apidocSignatureSpan">(arg1, arg2)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function serialize(arg1, arg2) {
+    invariant(arguments.length === 1 || arguments.length === 2, "serialize expects one or 2 arguments")
+    var thing = arguments.length === 1 ? arg1 : arg2
+    var schema = arguments.length === 1 ? null : arg1
+    if (Array.isArray(thing)) {
+        if (thing.length === 0)
+            return [] // don't bother finding a schema
+        else if (!schema)
+            schema = getDefaultModelSchema(thing[0])
+    } else if (!schema) {
+        schema = getDefaultModelSchema(thing)
+    }
+    invariant(!!schema, "Failed to find default schema for " + arg1)
+    if (Array.isArray(thing))
+        return thing.map(function (item) {
+            return serializeWithSchema(schema, item)
+        })
+    return serializeWithSchema(schema, thing)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```javascript
+var schema = _.createSimpleSchema({
+  a: _.custom(
+    function(v) { return v + 2 },
+    function(v) { return v - 2 }
+  )
+})
+t.deepEqual(_.<span class="apidocCodeKeywordSpan">serialize</span>(s, { a: 4 }), { a: 6 })
+t.deepEqual(_.deserialize(s, { a: 6 }), { a: 4 })
+```
+
+Returns **PropSchema**
+
+## object
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.serializr.serializeAll" id="apidoc.element.serializr.serializeAll">
+        function <span class="apidocSignatureSpan">serializr.</span>serializeAll
+        <span class="apidocSignatureSpan">(target)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function serializeAll(target) {
+    invariant(arguments.length === 1 &amp;&amp; typeof target === "function", "@serializeAll can only be used as class decorator")
+
+    var info = getDefaultModelSchema(target)
+    if (!info || !target.hasOwnProperty("serializeInfo")) {
+        info = createModelSchema(target, {})
+        setDefaultModelSchema(target, info)
+    }
+
+    getDefaultModelSchema(target).props["*"] = true
+    return target
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.serializr.setDefaultModelSchema" id="apidoc.element.serializr.setDefaultModelSchema">
+        function <span class="apidocSignatureSpan">serializr.</span>setDefaultModelSchema
+        <span class="apidocSignatureSpan">(clazz, modelSchema)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function setDefaultModelSchema(clazz, modelSchema) {
+    invariant(isModelSchema(modelSchema))
+    return clazz.serializeInfo = modelSchema
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.serializr.update" id="apidoc.element.serializr.update">
+        function <span class="apidocSignatureSpan">serializr.</span>update
+        <span class="apidocSignatureSpan">(modelSchema, target, json, callback, customArgs)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function update(modelSchema, target, json, callback, customArgs) {
+    var inferModelSchema =
+        arguments.length === 2 // only target and json
+        || typeof arguments[2] === "function" // callback as third arg
+
+    if (inferModelSchema) {
+        target = arguments[0]
+        modelSchema = getDefaultModelSchema(target)
+        json = arguments[1]
+        callback = arguments[2]
+        customArgs = arguments[3]
+    } else {
+        modelSchema = getDefaultModelSchema(modelSchema)
+    }
+    invariant(isModelSchema(modelSchema), "update failed to determine schema")
+    invariant(typeof target === "object" &amp;&amp; target &amp;&amp; !Array.isArray(target), "update needs an object")
+    var context = new Context(null, modelSchema, json, callback, customArgs)
+    context.target = target
+    var lock = context.createCallback(GUARDED_NOOP)
+    deserializePropsWithSchema(context, modelSchema, json, target)
+    lock()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
